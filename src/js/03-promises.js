@@ -4,6 +4,10 @@ const form = document.querySelector('.form');
 
 form.addEventListener('submit', onSubmitForm);
 
+/**
+ * Рrocesses the form data and creates a promises
+ * @param {Object} evt form elements
+ */
 function onSubmitForm(evt) {
   evt.preventDefault();
   const delay = Number(form.delay.value);
@@ -23,10 +27,14 @@ function onSubmitForm(evt) {
         });
       });
   }
-
-  evt.currentTarget.reset();
 }
 
+/**
+ * Create Promise
+ * @param {Numner} position
+ * @param {Number} delay
+ * @returns {Object} new Promise
+ */
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {

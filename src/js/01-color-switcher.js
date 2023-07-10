@@ -15,6 +15,9 @@ refs.stopBtn.addEventListener('click', onStopBtn);
 let timerId = null;
 refs.stopBtn.disabled = true;
 
+/**
+ * Starting random background change
+ */
 function onStartBtn() {
   timerId = setInterval(() => {
     refs.body.style.backgroundColor = getRandomHexColor();
@@ -23,6 +26,9 @@ function onStartBtn() {
   refs.stopBtn.disabled = false;
 }
 
+/**
+ * Stoping random background change
+ */
 function onStopBtn() {
   clearInterval(timerId);
   refs.startBtn.disabled = false;

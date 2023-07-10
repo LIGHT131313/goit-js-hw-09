@@ -16,6 +16,7 @@ const currentTime = Date.now();
 let isActive = false;
 refs.startBtn.disabled = true;
 
+// Options for Flatpickr
 const options = {
   enableTime: true,
   enableSeconds: true, // for a quick test
@@ -40,6 +41,9 @@ const options = {
 
 const fp = flatpickr(refs.input, options);
 
+/**
+ * Creates a timer and changes its values in the interface
+ */
 function startTimer() {
   let deltaTime = fp.selectedDates[0] - currentTime;
   const id = setInterval(() => {
@@ -60,11 +64,19 @@ function startTimer() {
 
 refs.startBtn.addEventListener('click', onStartBtn);
 
+/**
+ * Starts the timer
+ */
 function onStartBtn() {
   startTimer();
   refs.startBtn.disabled = true;
 }
 
+/**
+ *  Convert ms to seconds, minutes, hours, days
+ * @param {Number} ms
+ * @returns {Object}  days, hours, minutes, seconds
+ */
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
@@ -79,6 +91,11 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+/**
+ * Convert to string and add zero
+ * @param {Number} value
+ * @returns {String} value with zero
+ */
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
