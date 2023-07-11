@@ -47,11 +47,7 @@ const fp = flatpickr(refs.input, options);
 function startTimer() {
   let deltaTime = fp.selectedDates[0] - currentTime;
   const id = setInterval(() => {
-    const { days, hours, minutes, seconds } = convertMs(deltaTime);
-    refs.days.textContent = addLeadingZero(days);
-    refs.hours.textContent = addLeadingZero(hours);
-    refs.minutes.textContent = addLeadingZero(minutes);
-    refs.seconds.textContent = addLeadingZero(seconds);
+    updateTimer(deltaTime);
 
     setTimeout(() => {
       clearInterval(id);
@@ -60,6 +56,18 @@ function startTimer() {
     deltaTime -= 1000;
   }, 1000);
   isActive = true;
+}
+
+/**
+ * Update timer values in interface
+ * @param {Number} deltaTime
+ */
+function updateTimer(deltaTime) {
+  const { days, hours, minutes, seconds } = convertMs(deltaTime);
+  refs.days.textContent = addLeadingZero(days);
+  refs.hours.textContent = addLeadingZero(hours);
+  refs.minutes.textContent = addLeadingZero(minutes);
+  refs.seconds.textContent = addLeadingZero(seconds);
 }
 
 refs.startBtn.addEventListener('click', onStartBtn);

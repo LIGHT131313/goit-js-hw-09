@@ -10,6 +10,7 @@ form.addEventListener('submit', onSubmitForm);
  */
 function onSubmitForm(evt) {
   evt.preventDefault();
+
   const delay = Number(form.delay.value);
   const step = Number(form.step.value);
   const amount = Number(form.amount.value);
@@ -27,6 +28,7 @@ function onSubmitForm(evt) {
         });
       });
   }
+  evt.currentTarget.reset();
 }
 
 /**
