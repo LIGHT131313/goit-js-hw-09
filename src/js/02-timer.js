@@ -78,6 +78,7 @@ refs.startBtn.addEventListener('click', onStartBtn);
 function onStartBtn() {
   startTimer();
   refs.startBtn.disabled = true;
+  refs.input.disabled = true;
 }
 
 /**
