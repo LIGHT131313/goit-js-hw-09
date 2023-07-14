@@ -48,13 +48,12 @@ function startTimer() {
   let deltaTime = fp.selectedDates[0] - currentTime;
   const id = setInterval(() => {
     updateTimer(deltaTime);
-
-    setTimeout(() => {
+    if (deltaTime < 1000) {
       clearInterval(id);
-    }, deltaTime);
-
+    }
     deltaTime -= 1000;
   }, 1000);
+
   isActive = true;
 }
 
